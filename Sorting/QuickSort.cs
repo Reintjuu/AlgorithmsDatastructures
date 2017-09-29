@@ -4,17 +4,16 @@ namespace ADCode.Sorting
 {
 	public class QuickSort
 	{
-		public QuickSort()
+		private readonly int[] sorted;
+		
+		public QuickSort(int[] array)
 		{
-			var array = new int[] {5, 6, 2, 1, 0, 5, 2, 3, 6, 3, 7, 1, 3};
 			Sort(array, 0, array.Length - 1);
-			Print(array);
+			sorted = array;
 		}
 
 		private void Sort(int[] array, int low, int high)
 		{
-			Print(array);
-
 			if (low < high)
 			{
 				int pivot = MedianOfThree(array, low, high);
@@ -69,15 +68,15 @@ namespace ADCode.Sorting
 			array[b] = temp;
 		}
 
-		private void Print(int[] array)
+		public override string ToString()
 		{
 			string s = string.Empty;
-			for (int a = 0; a < array.Length; a++)
+			for (int a = 0; a < sorted.Length; a++)
 			{
-				s += array[a] + " ";
+				s += sorted[a] + " ";
 			}
 
-			Console.WriteLine(s);
+			return s;
 		}
 	}
 }
