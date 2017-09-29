@@ -14,12 +14,11 @@ namespace ADCode.Sorting
 
 		private void Sort(int[] array, int low, int high)
 		{
-			if (low < high)
-			{
-				int pivot = MedianOfThree(array, low, high);
-				Sort(array, low, pivot - 1);
-				Sort(array, pivot + 1, high);
-			}
+			if (low >= high) return;
+			
+			int pivot = MedianOfThree(array, low, high);
+			Sort(array, low, pivot - 1);
+			Sort(array, pivot + 1, high);
 		}
 
 		private int Partition(int[] array, int low, int high)
