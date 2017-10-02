@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinarySearchTrees\BinarySearchTree.cs" />
+    <Compile Include="BinarySearchTrees\BinarySearchTreesProgram.cs" />
+    <Compile Include="BinarySearchTrees\IBinarySearchTree.cs" />
+    <Compile Include="BinarySearchTrees\Node.cs" />
     <Compile Include="BinaryTrees\BinaryTreesProgram.cs" />
     <Compile Include="BinaryTrees\FCNSNode.cs" />
     <Compile Include="BinaryTrees\FCNSTree.cs" />

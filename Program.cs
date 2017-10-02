@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ADCode.BinarySearchTrees;
 using ADCode.BinaryTrees;
 using ADCode.Lists;
 using ADCode.Recursion;
@@ -14,7 +15,8 @@ namespace ADCode
 			// new ListProgram();
 			// new RecursionProgram();
 			// new BinaryTreesProgram();
-			Console.WriteLine(new QuickSort(new[] {5, 6, 2, 1, 0, 5, 2, 3, 6, 3, 7, 1, 3}));
+			// Console.WriteLine(new QuickSort(new[] {5, 6, 2, 1, 0, 5, 2, 3, 6, 3, 7, 1, 3}));
+			new BinarySearchTreesProgram();
 		}
 	}
 }
