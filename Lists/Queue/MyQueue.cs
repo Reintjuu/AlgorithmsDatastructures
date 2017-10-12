@@ -5,60 +5,95 @@ namespace ADCode.Lists.Queue
 {
 	public class MyQueue<T> : IQueue<T>
 	{
-		private int capacity = 4;
-		private int current;
-		
 		private MyArrayList<T> arrayList;
-		
+		private int currentSize;
+
+		private int capacity = 4;
+		private int front;
+		private int back;
+
 		public MyQueue()
 		{
 			arrayList = new MyArrayList<T>(capacity);
-			current = 0;
+			MakeEmpty();
 		}
-
 
 		public bool IsEmpty()
 		{
-			try
-			{
-				arrayList.Get(0);
-				return false;
-			}
-			catch (NullReferenceException)
-			{
-				return true;
-			}
+			return currentSize == 0;
 		}
 
 		public void Enqueue(T item)
 		{
-			try
+			if (currentSize == capacity - 1)
 			{
-				arrayList.Add(item);
-				current++;
+				DoubleArrayListSize();
 			}
-			catch (IndexOutOfRangeException)
-			{
-				// TODO: Fix
-//				capacity *= 2;
-//				MyArrayList<T> temp = arrayList;
-//				temp = new MyArrayList<T>(capacity);
-//				for (int i = 0; i < capacity / 2; i++)
-//				{
-//					arrayList.Add(temp.Get(i));
-//				}
-			}
-			
+
+			back = Increment(back);
+			arrayList.Set(back, item);
+			currentSize++;
 		}
 
 		public T Dequeue()
 		{
-			throw new System.NotImplementedException();
+			if (IsEmpty())
+			{
+				throw new NullReferenceException("No more objects in the queue.");
+			}
+			currentSize--;
+			
+			var returnValue = arrayList.Get(front);
+			front = Increment(front);
+			return returnValue;
 		}
 
 		public int Size()
 		{
-			throw new System.NotImplementedException();
+			return currentSize;
+		}
+
+		public override string ToString()
+		{
+			string s = string.Empty;
+
+			for (int i = front; i <= back; i++)
+			{
+				s += (i == front ? string.Empty : ", ") + arrayList.Get(i);
+			}
+
+			return s;
+		}
+
+		private int Increment(int x)
+		{
+			if (++x == capacity)
+			{
+				x = 0;
+			}
+
+			return x;
+		}
+
+		private void DoubleArrayListSize()
+		{
+			capacity *= 2;
+			var newArrayList = new MyArrayList<T>(capacity);
+			for (int i = 0; i < currentSize; i++, front = Increment(front))
+			{
+				newArrayList.Set(i, arrayList.Get(front));
+			}
+
+			arrayList = newArrayList;
+			front = 0;
+			back = currentSize - 1;
+		}
+
+		private void MakeEmpty()
+		{
+			currentSize = 0;
+			front = 0;
+			back = -1;
 		}
 	}
 }

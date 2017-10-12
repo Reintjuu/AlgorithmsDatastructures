@@ -38,6 +38,12 @@ namespace ADCode.Lists.ArrayList
 
         public void Set(int index, T item)
         {
+            if (index == currentIndex)
+            {
+                Add(item);
+                return;
+            }
+            
             if (index >= currentIndex)
             {
                 throw new IndexOutOfRangeException();
@@ -48,12 +54,18 @@ namespace ADCode.Lists.ArrayList
 
         public void Print()
         {
+            Console.WriteLine(ToString());
+        }
+
+        public override string ToString()
+        {
+            string s = string.Empty;
             for (int i = 0; i < currentIndex; i++)
             {
-                Console.Write((i > 0 ? ", " : "") + array[i]);
+                s += (i > 0 ? ", " : "") + array[i];
             }
-            
-            Console.Write('\n');
+
+            return s;
         }
 
         public void Clear()
