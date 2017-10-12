@@ -59,6 +59,7 @@
     <Compile Include="Lists\Queue\MyQueue.cs" />
     <Compile Include="Lists\Stack\IStack.cs" />
     <Compile Include="Lists\Stack\MyStack.cs" />
+    <Compile Include="PrimeNumbers\FindPrimes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recursion\Math.cs" />
