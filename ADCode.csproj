@@ -62,7 +62,9 @@
     <Compile Include="PrimeNumbers\FindPrimes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recursion\Factorial.cs" />
     <Compile Include="Recursion\Math.cs" />
+    <Compile Include="Recursion\MathProgram.cs" />
     <Compile Include="Recursion\RecursionProgram.cs" />
     <Compile Include="Sorting\QuickSort.cs" />
   </ItemGroup>
