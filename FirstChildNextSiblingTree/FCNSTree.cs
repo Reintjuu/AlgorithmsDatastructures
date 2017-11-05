@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ADCode.BinaryTrees
+namespace ADCode.FirstChildNextSiblingTree
 {
 	public class FCNSTree<T> : IFNCSTree<T>
 	{
@@ -13,12 +13,12 @@ namespace ADCode.BinaryTrees
 
 		public int Size()
 		{
-			return SizeHelper(RootNode);
+			return Size(RootNode);
 		}
 
 		public int Height()
 		{
-			return HeightHelper(RootNode);
+			return Height(RootNode);
 		}
 
 		public void PrintPreOrder()
@@ -40,24 +40,24 @@ namespace ADCode.BinaryTrees
 			PreOrderTraversal(node.NextSibling);
 		}
 
-		public static int HeightHelper<T>(FCNSNode<T> node)
+		public static int Height<T>(FCNSNode<T> node)
 		{
 			if (node == null)
 			{
 				return -1;
 			}
 
-			return Math.Max(1 + HeightHelper(node.FirstChild), HeightHelper(node.NextSibling));
+			return Math.Max(1 + Height(node.FirstChild), Height(node.NextSibling));
 		}
 
-		public static int SizeHelper(FCNSNode<T> node)
+		public static int Size(FCNSNode<T> node)
 		{
 			if (node == null)
 			{
 				return 0;
 			}
 
-			return node.GetSize() + SizeHelper(node.FirstChild) + SizeHelper(node.NextSibling);
+			return node.GetSize() + Size(node.FirstChild) + Size(node.NextSibling);
 		}
 		
 		public FCNSNode<T> AddSibling(FCNSNode<T> node)

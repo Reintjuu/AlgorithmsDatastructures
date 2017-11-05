@@ -3,6 +3,7 @@ using ADCode.Lists.ArrayList;
 
 namespace ADCode.Lists.Queue
 {
+	// Week 2 - Opdracht 5
 	public class MyQueue<T> : IQueue<T>
 	{
 		private MyArrayList<T> arrayList;

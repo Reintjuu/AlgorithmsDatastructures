@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ADCode.BinaryTrees
+namespace ADCode.FirstChildNextSiblingTree
 {
 	public class FCNSNode<T>
 	{

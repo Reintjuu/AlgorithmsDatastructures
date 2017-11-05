@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using ADCode.BinaryHeap;
 using ADCode.BinarySearchTrees;
 using ADCode.BinaryTrees;
+using ADCode.FirstChildNextSiblingTree;
+using ADCode.Graphs;
 using ADCode.Lists;
 using ADCode.Recursion;
 using ADCode.Sorting;
@@ -12,11 +15,16 @@ namespace ADCode
 	{
 		public static void Main(string[] args)
 		{
-			//new ListProgram();
-			new RecursionProgram();
+			// new ListProgram();
+			// new RecursionProgram();
+			// new FirstChildNextSiblingProgram();
 			// new BinaryTreesProgram();
-			// Console.WriteLine(new QuickSort(new[] {5, 6, 2, 1, 0, 5, 2, 3, 6, 3, 7, 1, 3}));
 			// new BinarySearchTreesProgram();
+			// new MathProgram();
+			// new RecursionProgram();
+			// new SortingProgram();
+			// new BinaryHeapProgram();
+			new GraphProgram();
 		}
 	}
 }

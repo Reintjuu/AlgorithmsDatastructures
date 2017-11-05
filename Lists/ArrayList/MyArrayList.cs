@@ -2,6 +2,7 @@
 
 namespace ADCode.Lists.ArrayList
 {
+    // Week 2 - Opdracht 1
     public class MyArrayList<T> : IArrayList<T>
     {
         private T[] array;

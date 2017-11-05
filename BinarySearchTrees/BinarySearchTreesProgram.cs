@@ -6,13 +6,14 @@ namespace ADCode.BinarySearchTrees
 	{
 		public BinarySearchTreesProgram()
 		{
-			BinarySearchTree tree = new BinarySearchTree();
+			BinarySearchTree<int> tree = new BinarySearchTree<int>();
 			tree.Insert(6);
 			tree.Insert(7);
 			tree.Insert(4);
 			tree.Insert(2);
 			tree.Insert(5);
-			Console.WriteLine(tree.InOrder());
+			Console.WriteLine(tree.ToString());
+			tree.Print();
 		}
 	}
 }

@@ -64,6 +64,7 @@ namespace ADCode.Lists
             Console.WriteLine(myQueue.Size());
         }
         
+        // Week 2 - Opdracht 4a
         private static bool CheckBrackets(string s)
         {
 			MyStack<char> stack = new MyStack<char>();
@@ -102,6 +103,7 @@ namespace ADCode.Lists
             return false;
         }
 
+        // Week 2 - Opdracht 4b
         private static bool CheckBrackets2(string s)
         {
             MyStack<char> stack = new MyStack<char>();

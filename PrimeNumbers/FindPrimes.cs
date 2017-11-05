@@ -4,6 +4,7 @@ namespace ADCode.PrimeNumbers
 {
 	public class FindPrimes
 	{
+		// Week 1 - Opgave 1
 		public bool[] SieveOfEratosthenes(uint n)
 		{
 			if (!(n > 1))

@@ -1,4 +1,4 @@
-﻿namespace ADCode.BinaryTrees
+﻿namespace ADCode.FirstChildNextSiblingTree
 {
 	public interface IFNCSTree<T>
 	{

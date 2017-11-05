@@ -2,6 +2,7 @@
 
 namespace ADCode.Lists.LinkedList
 {
+    // Week 2 - Opdracht 2
     public class MyLinkedList<T> : ILinkedList<T>
     {
         private readonly Node<T> header;

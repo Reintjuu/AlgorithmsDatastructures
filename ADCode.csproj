@@ -41,14 +41,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryHeap\BinaryHeapProgram.cs" />
+    <Compile Include="BinaryHeap\PriorityQueue.cs" />
+    <Compile Include="BinaryHeap\ReverseComparer.cs" />
     <Compile Include="BinarySearchTrees\BinarySearchTree.cs" />
     <Compile Include="BinarySearchTrees\BinarySearchTreesProgram.cs" />
     <Compile Include="BinarySearchTrees\IBinarySearchTree.cs" />
     <Compile Include="BinarySearchTrees\Node.cs" />
+    <Compile Include="BinarySearchTrees\BinarySearchTreePrinter.cs" />
+    <Compile Include="BinaryTrees\BinaryNode.cs" />
+    <Compile Include="BinaryTrees\BinaryTree.cs" />
     <Compile Include="BinaryTrees\BinaryTreesProgram.cs" />
-    <Compile Include="BinaryTrees\FCNSNode.cs" />
-    <Compile Include="BinaryTrees\FCNSTree.cs" />
-    <Compile Include="BinaryTrees\IFNCSTree.cs" />
+    <Compile Include="BinaryTrees\IBinaryTree.cs" />
+    <Compile Include="FirstChildNextSiblingTree\FirstChildNextSiblingProgram.cs" />
+    <Compile Include="FirstChildNextSiblingTree\FCNSNode.cs" />
+    <Compile Include="FirstChildNextSiblingTree\FCNSTree.cs" />
+    <Compile Include="FirstChildNextSiblingTree\IFNCSTree.cs" />
+    <Compile Include="Graphs\Edge.cs" />
+    <Compile Include="Graphs\Graph.cs" />
+    <Compile Include="Graphs\GraphProgram.cs" />
+    <Compile Include="Graphs\IGraph.cs" />
+    <Compile Include="Graphs\IVertex.cs" />
+    <Compile Include="Graphs\Path.cs" />
+    <Compile Include="Graphs\Vertex.cs" />
     <Compile Include="Lists\ArrayList\MyArrayList.cs" />
     <Compile Include="Lists\ArrayList\IArrayList.cs" />
     <Compile Include="Lists\LinkedList\MyLinkedList.cs" />
@@ -59,14 +74,20 @@
     <Compile Include="Lists\Queue\MyQueue.cs" />
     <Compile Include="Lists\Stack\IStack.cs" />
     <Compile Include="Lists\Stack\MyStack.cs" />
+    <Compile Include="Polynomials\Hermite.cs" />
     <Compile Include="PrimeNumbers\FindPrimes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recursion\Factorial.cs" />
     <Compile Include="Recursion\Math.cs" />
     <Compile Include="Recursion\MathProgram.cs" />
+    <Compile Include="Recursion\Recursion.cs" />
     <Compile Include="Recursion\RecursionProgram.cs" />
-    <Compile Include="Sorting\QuickSort.cs" />
+    <Compile Include="Sorting\Insertion.cs" />
+    <Compile Include="Sorting\Merge.cs" />
+    <Compile Include="Sorting\Quick.cs" />
+    <Compile Include="Sorting\Shell.cs" />
+    <Compile Include="Sorting\SortingProgram.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

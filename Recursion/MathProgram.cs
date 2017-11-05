@@ -8,7 +8,12 @@ namespace ADCode.Recursion
 		public MathProgram()
 		{
 			// Console.WriteLine(Math.Sum(123));
+			Console.WriteLine(Math.BinaryOnes(2345));
+			// PowBenchmark();
+		}
 
+		private void PowBenchmark()
+		{
 			Stopwatch s = new Stopwatch();
 			uint n = 50000;
 

@@ -1,7 +1,8 @@
 ﻿namespace ADCode.Recursion
 {
-	public class Factorial
+	public static class Factorial
 	{
+		// Week 3 - Opdracht 1
 		public static uint RecursiveFactorial(uint value)
 		{
 			if (value == 0)
