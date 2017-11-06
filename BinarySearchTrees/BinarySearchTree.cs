@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ADCode.BinarySearchTrees
 {
@@ -74,6 +75,12 @@ namespace ADCode.BinarySearchTrees
 			return ElementAt(FindMin(root));
 		}
 
+		// Oefentoets - Opgave 2.
+		public T FindSecondMin()
+		{
+			return ElementAt(FindSecondMin(root));
+		}
+
 		public T FindMax()
 		{
 			return ElementAt(FindMax(root));
@@ -101,7 +108,7 @@ namespace ADCode.BinarySearchTrees
 			{
 				throw new NullReferenceException("Node is null");
 			}
-			
+
 			return node.element;
 		}
 
@@ -153,7 +160,40 @@ namespace ADCode.BinarySearchTrees
 
 			return node;
 		}
-		
+
+
+		/// <summary>
+		/// Find second smallest item in a subtree.
+		/// </summary>
+		/// <param name="node">The node that roots the tree.</param>
+		/// <returns>Node containing the smallest item.</returns>
+		/// 
+		/// Oefentoets - Opgave 2.
+		private Node<T> FindSecondMin(Node<T> node)
+		{
+			int count = 2;
+			while (node != null)
+			{
+				int sizeOfLeftSubtree = Node<T>.Size(node.left);
+				if (sizeOfLeftSubtree + 1 == count)
+				{
+					return node;
+				}
+				
+				if (sizeOfLeftSubtree < count)
+				{
+					node = node.right;
+					count -= sizeOfLeftSubtree + 1;
+				}
+				else
+				{
+					node = node.left;
+				}
+			}
+
+			return node;
+		}
+
 		/// <summary>
 		/// Find biggest item in a subtree.
 		/// </summary>
@@ -213,13 +253,13 @@ namespace ADCode.BinarySearchTrees
 			{
 				throw new NullReferenceException("Node is null.");
 			}
-			
+
 			if (node.left != null)
 			{
 				node.left = RemoveMin(node.left);
 				return node;
 			}
-			
+
 			return node.right;
 		}
 

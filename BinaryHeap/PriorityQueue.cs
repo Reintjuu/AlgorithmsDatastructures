@@ -77,7 +77,7 @@ namespace ADCode.BinaryHeap
 		{
 			currentSize = 0;
 		}
-		
+
 		public void BuildHeap()
 		{
 			for (int i = currentSize / 2; i > 0; i--)
@@ -178,55 +178,95 @@ namespace ADCode.BinaryHeap
 			return comparer?.Compare(left, right) ?? ((IComparable) left).CompareTo(right);
 		}
 
-		public override string ToString()
+		public bool IsMaxHeap()
 		{
-			return string.Join(", ", heap);
+			T left = heap[2];
+			T right = heap[3];
+
+			T compareWith;
+			// Check if left node exists.
+			if (left != null)
+			{
+				// Set left node to compare with.
+				compareWith = left;
+			}
+			else if (right != null)
+			{
+				// Else set the right node.
+				compareWith = right;
+			}
+			else
+			{
+				throw new Exception("Not a Max- or MinHeap.");
+			}
+
+			return ((IComparable) heap[1]).CompareTo(compareWith) > 0;
 		}
-		
-//		// Stolen from Tim.
+
+		public bool IsComplete()
+		{
+			int numberOfRows = (int) Math.Ceiling(Math.Log(currentSize + 1, 2));
+			bool even = numberOfRows % 2 == 0;
+			int maxAllowed = (int) Math.Pow(numberOfRows, 2) - (even ? 1 : 2);
+			
+			return currentSize <= maxAllowed;
+		}
+
 //		public override string ToString()
 //		{
-//			string res = "";
-//			string spacing = "  "; // mostly length of elements (string length) + 1 space is enough
-//			int noOfRows = (int) Math.Ceiling(Math.Log(Convert.ToDouble(currentSize), 2.0));
-//			int lengthOfLastRow = (int) Math.Pow(2, noOfRows - 1);
-//			for (int i = 1; i < currentSize; i++)
-//			{
-//				if (Math.Log(Convert.ToDouble(i), 2.0) == Math.Round(Math.Log(Convert.ToDouble(i), 2.0)))
-//				{
-//					res += '\n';
-//					int offset = OffsetFactor((int) Math.Ceiling(Math.Log(i, 2))+1, lengthOfLastRow);
-//					for (int j = 0; j < offset; j++)
-//					{
-//						res += spacing;
-//					}
-//				}
-//               
-//				res += heap[i];
-//				int spacingFactor = SpacingFactor((int) Math.Floor(Math.Log(i, 2)) + 1, lengthOfLastRow);
-//				//Console.WriteLine("index: {0} rowNumb: {1} with spacing: {2}", i, (int) Math.Ceiling(Math.Log(i, 2)) + 1, spacingFactor);
-//				for (int j = 0; j < spacingFactor; j++)
-//				{
-//					res += spacing;
-//				}
-//			}
-//			return res;
+//			return string.Join(", ", heap);
 //		}
-//		
-//		// current row number and length of bottom row; helper function for ToString
-//		private int OffsetFactor(int currRow, int lobr)
-//		{
-//			if (currRow == 1)
-//				return (lobr + (lobr - 1)) / 2;
-//			return OffsetFactor(currRow - 1, lobr) / 2;
-//		}
-//
-//		// helper function for ToString
-//		private int SpacingFactor(int currRow, int lobr)
-//		{
-//			if (currRow == 1)
-//				return lobr + (lobr - 1);
-//			return SpacingFactor(currRow - 1, lobr) / 2;
-//		}
+
+		// Stolen from Tim.
+		public override string ToString()
+		{
+			string s = String.Empty;
+			string spacing = "  ";
+			
+			int numberOfRows = (int) Math.Ceiling(Math.Log(currentSize + 1, 2));
+			int lengthOfLastRow = (int) Math.Pow(2, numberOfRows - 1);
+			for (int i = 1; i < currentSize + 1; i++)
+			{
+				if (Math.Log(i, 2).CompareTo(Math.Round(Math.Log(i, 2))) == 0)
+				{
+					s += '\n';
+					int offset = OffsetFactor((int) Math.Ceiling(Math.Log(i, 2)) + 1, lengthOfLastRow);
+					for (int j = 0; j < offset; j++)
+					{
+						s += spacing;
+					}
+				}
+
+				s += heap[i];
+				int spacingFactor = SpacingFactor((int) Math.Floor(Math.Log(i, 2)) + 1, lengthOfLastRow);
+
+				for (int j = 0; j < spacingFactor; j++)
+				{
+					s += spacing;
+				}
+			}
+
+			return s;
+		}
+
+		private int OffsetFactor(int currentRow, int lengthOfBottomRow)
+		{
+			if (currentRow == 1)
+			{
+				return (lengthOfBottomRow + (lengthOfBottomRow - 1)) / 2;
+			}
+
+			return OffsetFactor(currentRow - 1, lengthOfBottomRow) / 2;
+		}
+
+		private int SpacingFactor(int currentRow, int lengthOfBottomRow)
+		{
+			if (currentRow == 1)
+			{
+				return lengthOfBottomRow + (lengthOfBottomRow - 1);
+			}
+
+			return SpacingFactor(currentRow - 1, lengthOfBottomRow) / 2;
+		}
 	}
 }

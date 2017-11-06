@@ -8,6 +8,7 @@ using ADCode.Graphs;
 using ADCode.Lists;
 using ADCode.Recursion;
 using ADCode.Sorting;
+using ADCode.Toets;
 
 namespace ADCode
 {
@@ -24,7 +25,13 @@ namespace ADCode
 			// new RecursionProgram();
 			// new SortingProgram();
 			// new BinaryHeapProgram();
-			new GraphProgram();
+			// new GraphProgram();
+			
+			// Toets
+			// new Opgave1();
+			// new Opgave2();
+			// new Opgave3();
+			new Opgave4();
 		}
 	}
 }

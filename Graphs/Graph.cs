@@ -8,6 +8,8 @@ namespace ADCode.Graphs
 	public class Graph : IGraph
 	{
 		private readonly Dictionary<string, Vertex> vertices = new Dictionary<string, Vertex>();
+		
+		private bool hasCycle;
 
 		/// <summary>
 		/// Adds a new edge to the graph.
@@ -16,7 +18,7 @@ namespace ADCode.Graphs
 		{
 			Vertex v = GetVertex(sourceName);
 			Vertex w = GetVertex(destName);
-			v.adj.AddLast(new Edge(w, cost));
+			v.neighbors.AddLast(new Edge(w, cost));
 		}
 
 		public void PrintPath(string destName)
@@ -55,7 +57,7 @@ namespace ADCode.Graphs
 			{
 				Vertex v = q.Dequeue();
 
-				foreach (Edge e in v.adj)
+				foreach (Edge e in v.neighbors)
 				{
 					Vertex w = e.dest;
 
@@ -72,12 +74,12 @@ namespace ADCode.Graphs
 		public void Dijkstra(string startName)
 		{
 			PriorityQueue<Path> pq = new PriorityQueue<Path>();
-			
+
 			if (!vertices.TryGetValue(startName, out Vertex start))
 			{
 				throw new NullReferenceException("Start vertex not found.");
 			}
-			
+
 			ClearAll();
 			pq.Add(new Path(start, 0));
 			start.dist = 0;
@@ -87,7 +89,7 @@ namespace ADCode.Graphs
 			{
 				Path vrec = pq.Remove();
 				Vertex v = vrec.dest;
-				
+
 				// Already processed.
 				if (v.scratch != 0)
 				{
@@ -97,7 +99,7 @@ namespace ADCode.Graphs
 				v.scratch = 1;
 				nodesSeen++;
 
-				foreach (Edge edge in v.adj)
+				foreach (Edge edge in v.neighbors)
 				{
 					Vertex w = edge.dest;
 					int cost = edge.cost;
@@ -152,6 +154,8 @@ namespace ADCode.Graphs
 		/// </summary>
 		private void ClearAll()
 		{
+			hasCycle = false;
+			
 			foreach (var vertex in vertices)
 			{
 				vertex.Value.Reset();
@@ -161,6 +165,43 @@ namespace ADCode.Graphs
 		public override string ToString()
 		{
 			return string.Join("\n", vertices.Values);
+		}
+
+		public void ShowCycles()
+		{
+			foreach (var vertex in vertices.Values)
+			{
+				Console.WriteLine($"{vertex.name} is part of a cycle: {HasCycle(vertex.name)}");
+			}
+		}
+		
+		public bool HasCycle(string vertexName)
+		{
+			ClearAll();
+			FindCycle(GetVertex(vertexName));
+			return hasCycle;
+		}
+
+		private void FindCycle(Vertex v)
+		{
+			v.scratch = 1;
+			
+			// Just using dist because it's available.
+			v.dist = 1;
+
+			foreach (Edge edge in v.neighbors)
+			{
+				if (edge.dest.scratch == 0)
+				{
+					FindCycle(edge.dest);
+				}
+				else if (edge.dest.dist == 1)
+				{
+					hasCycle = true;
+				}
+			}
+
+			v.dist = 0;
 		}
 	}
 }

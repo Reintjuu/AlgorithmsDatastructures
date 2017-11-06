@@ -6,7 +6,7 @@ namespace ADCode.Graphs
 	public class Vertex : IVertex
 	{
 		public string name;
-		public LinkedList<Edge> adj;
+		public LinkedList<Edge> neighbors;
 		public int dist;
 		public Vertex prev;
 		public int scratch;
@@ -14,7 +14,7 @@ namespace ADCode.Graphs
 		public Vertex(string name)
 		{
 			this.name = name;
-			adj = new LinkedList<Edge>();
+			neighbors = new LinkedList<Edge>();
 			Reset();
 		}
 
@@ -28,10 +28,10 @@ namespace ADCode.Graphs
 		public override string ToString()
 		{
 			string s = name +
-			           (dist != int.MaxValue ? $"({dist})" : string.Empty) +
-			           (adj.Any() ? " --> " : string.Empty);
+			           (dist != int.MaxValue ? $"({dist})" : "(-1)") +
+			           (neighbors.Any() ? " --> " : string.Empty);
 
-			foreach (Edge edge in adj)
+			foreach (Edge edge in neighbors)
 			{
 				s += edge.dest.name + $"({edge.cost}) ";
 			}

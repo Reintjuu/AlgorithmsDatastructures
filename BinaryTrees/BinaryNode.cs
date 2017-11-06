@@ -9,7 +9,7 @@ namespace ADCode.BinaryTrees
 		public BinaryNode<T> Left { get; set; }
 		public BinaryNode<T> Right { get; set; }
 
-		public BinaryNode() : this(default(T), null, null)
+		public BinaryNode() : this(default(T))
 		{
 		}
 
@@ -22,7 +22,7 @@ namespace ADCode.BinaryTrees
 
 		/// <param name="t">The root to calucate from.</param>
 		/// <returns>The size of the binary tree rooted at t.</returns>
-		public static int Size<T>(BinaryNode<T> t)
+		public static int Size(BinaryNode<T> t)
 		{
 			if (t == null)
 			{
@@ -34,7 +34,7 @@ namespace ADCode.BinaryTrees
 
 		/// <param name="t">The root to calucate from.</param>
 		/// <returns>The height of the binary tree rooted at t.</returns>
-		public static int Height<T>(BinaryNode<T> t)
+		public static int Height(BinaryNode<T> t)
 		{
 			if (t == null)
 			{
@@ -47,7 +47,7 @@ namespace ADCode.BinaryTrees
 		/// <returns>A reference to a node that is the root of a duplicate of the binary tree rooted at the current node.</returns>
 		public BinaryNode<T> Duplicate()
 		{
-			BinaryNode<T> root = new BinaryNode<T>(Element, null, null);
+			BinaryNode<T> root = new BinaryNode<T>(Element);
 
 			// If there's a left subtree...
 			if (Left != null)
@@ -80,7 +80,7 @@ namespace ADCode.BinaryTrees
 			return sb;
 		}
 
-		public static int Leaves<T>(BinaryNode<T> node)
+		public static int Leaves(BinaryNode<T> node)
 		{
 			if (node == null)
 			{
@@ -95,7 +95,7 @@ namespace ADCode.BinaryTrees
 			return Leaves(node.Left) + Leaves(node.Right);
 		}
 
-		public static int OneNull<T>(BinaryNode<T> node)
+		public static int OneNull(BinaryNode<T> node)
 		{
 			if (node == null)
 			{
@@ -110,7 +110,7 @@ namespace ADCode.BinaryTrees
 			return OneNull(node.Left) + OneNull(node.Right);
 		}
 
-		public static int NoneNull<T>(BinaryNode<T> node)
+		public static int NoneNull(BinaryNode<T> node)
 		{
 			if (node == null)
 			{

@@ -88,6 +88,10 @@
     <Compile Include="Sorting\Quick.cs" />
     <Compile Include="Sorting\Shell.cs" />
     <Compile Include="Sorting\SortingProgram.cs" />
+    <Compile Include="Toets\Opgave1.cs" />
+    <Compile Include="Toets\Opgave2.cs" />
+    <Compile Include="Toets\Opgave3.cs" />
+    <Compile Include="Toets\Opgave4.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
